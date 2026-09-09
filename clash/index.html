@@ -492,6 +492,87 @@ body {
 .gw-entry-remove:hover { background: rgba(220,90,90,.22); }
 .gw-entries-empty { color: #888; font-size: .85rem; text-align: center; padding: 16px 0; }
 
+
+.gw-info-list {
+  margin: 4px 0 20px;
+  padding: 12px 14px;
+  background: rgba(217,164,65,.06);
+  border: 1px solid rgba(217,164,65,.16);
+  border-radius: 10px;
+}
+.gw-info-list p {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 7px 0;
+  color: #aaa;
+  font-size: .76rem;
+  line-height: 1.5;
+}
+.gw-info-list p:first-child { margin-top: 0; }
+.gw-info-list p:last-child { margin-bottom: 0; }
+.gw-info-list span {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #666;
+  border-radius: 50%;
+  color: var(--cg-soft);
+  font-size: .65rem;
+  font-weight: 900;
+}
+.gw-otp-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 14px;
+  background: #121212;
+  border: 1px solid #303030;
+  border-radius: 12px;
+}
+.gw-otp-label {
+  display: block;
+  color: var(--cg-soft);
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+.gw-otp-head h4 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+.gw-otp-head p { margin: 0; color: #888; font-size: .76rem; line-height: 1.45; }
+.gw-otp-timer {
+  flex-shrink: 0;
+  min-width: 64px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: rgba(217,164,65,.1);
+  color: var(--cg-soft);
+  font: 800 .78rem/1 "Courier New", monospace;
+  text-align: center;
+}
+#gwOtp { letter-spacing: .28em; font: 800 1.05rem/1.2 "Courier New", monospace; }
+#gwOtp::placeholder { letter-spacing: .18em; }
+.gw-winning-rate {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: rgba(217,164,65,.08);
+  border: 1px solid rgba(217,164,65,.2);
+  border-radius: 12px;
+}
+.gw-winning-rate .rate-label { color: #999; font-size: .74rem; font-weight: 700; }
+.gw-winning-rate .rate-value { margin-top: 4px; color: var(--cg-soft); font: 800 1.45rem/1 var(--font-display); }
+.gw-winning-rate .rate-sub { margin-top: 5px; color: #888; font-size: .72rem; }
 @media (max-width: 800px) {
   .giveaway-grid { grid-template-columns: 1fr; }
 }
@@ -730,18 +811,41 @@ body {
     </button>
     <h3 class="gw-modal-title">🎁 Join the Giveaway</h3>
     <form id="joinForm">
-      <div class="gw-field">
-        <label for="gwName">Your Clash of Clans ID Name <span class="req">*</span></label>
-        <input type="text" id="gwName" maxlength="60" required autocomplete="off" />
+      <div id="joinDetailsStep">
+        <div class="gw-field">
+          <label for="gwName">Clash of Clans ID Name <span class="req">*</span></label>
+          <input type="text" id="gwName" maxlength="60" required autocomplete="off" />
+        </div>
+        <div class="gw-field">
+          <label for="gwEmail">Gmail <span class="req">*</span></label>
+          <input type="email" id="gwEmail" maxlength="120" required autocomplete="email" placeholder="you@gmail.com" />
+          <span class="gw-hint" id="gwEmailHint">Gmail is required to contact you if you win &amp; validate your join.</span>
+        </div>
+        <div class="gw-info-list">
+          <p><span>?</span> Gmail is required to contact you if you win &amp; validate your join.</p>
+          <p><span>?</span> A One-Time-Password will be sent to that Gmail.</p>
+        </div>
       </div>
-      <div class="gw-field">
-        <label for="gwEmail">Your Email/Gmail <span class="req">*</span></label>
-        <input type="email" id="gwEmail" maxlength="120" required autocomplete="off" placeholder="you@gmail.com" />
-        <span class="gw-hint" id="gwEmailHint">Gmail addresses only.</span>
+
+      <div id="joinOtpStep" hidden>
+        <div class="gw-otp-head">
+          <div>
+            <span class="gw-otp-label">Verification required</span>
+            <h4>Enter your OTP</h4>
+            <p id="gwOtpEmailText">We sent a 6-digit code to your Gmail.</p>
+          </div>
+          <span class="gw-otp-timer" id="gwOtpTimer">10:00</span>
+        </div>
+        <div class="gw-field">
+          <label for="gwOtp">OTP <span class="req">*</span></label>
+          <input type="text" id="gwOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="123456" />
+          <span class="gw-hint">This code expires in 10 minutes.</span>
+        </div>
       </div>
+
       <div class="gw-modal-actions">
-        <button type="button" class="gw-btn secondary" id="joinModalCancel">← Back</button>
-        <button type="submit" class="gw-btn primary" id="joinSubmitBtn">Join Giveaway</button>
+        <button type="button" class="gw-btn secondary" id="joinModalCancel">Cancel</button>
+        <button type="submit" class="gw-btn primary" id="joinSubmitBtn">Join Giveaway →</button>
       </div>
       <p class="gw-status" id="joinStatus"></p>
     </form>
@@ -963,14 +1067,14 @@ body {
 
     card.innerHTML = `
       <p class="gw-title">🎁 NEW GIVEAWAY 🎁</p>
-      <p class="gw-msg">Click the button below to join the giveaway of "<b>${escapeHtml(data.prize)}</b>". Must be in our clan &amp; give a valid Gmail for the selection.</p>
+      <p class="gw-msg">Click the button below to join the giveaway of "<b>${escapeHtml(data.prize)}</b>". A verified Gmail is required for a valid entry and winner contact.</p>
       <div class="gw-stats">
         <span>Winners: <span class="val">${data.winnerCount}</span></span>
-        <span>Prize: <span class="val">${escapeHtml(data.prize)}</span></span>
+        <span>Members Joined: <span class="val" id="gwLiveCount">${data.entryCount}</span></span>
         <span>Ends: <span class="val" id="gwCountdown">${expired ? 'Ended' : formatCountdown(data.endsAt - Date.now())}</span></span>
       </div>
       <button class="gw-join-btn" id="gwJoinBtn" ${expired ? 'disabled' : ''}>
-        ${expired ? '⏳ Giveaway Ended — Awaiting Winner' : `🎉 CLICK HERE TO JOIN — <span id="gwLiveCount">${data.entryCount}</span> joined`}
+        ${expired ? '⏳ Giveaway Ended — Awaiting Winner' : '🎉 CLICK HERE TO JOIN'}
       </button>
     `;
 
@@ -1018,18 +1122,112 @@ body {
   const joinForm = document.getElementById('joinForm');
   const joinStatus = document.getElementById('joinStatus');
   const gwEmailHint = document.getElementById('gwEmailHint');
+  const joinDetailsStep = document.getElementById('joinDetailsStep');
+  const joinOtpStep = document.getElementById('joinOtpStep');
+  const gwOtp = document.getElementById('gwOtp');
+  const gwOtpTimer = document.getElementById('gwOtpTimer');
+  const gwOtpEmailText = document.getElementById('gwOtpEmailText');
   const GMAIL_RE_GW = /^[^\s@]+@gmail\.com$/i;
+  const OTP_STORAGE_KEY = 'labib_giveaway_pending_otp';
+  let otpTimerInterval = null;
+  let joinMode = 'details';
 
-  function openJoinModal() {
+  function getPendingOtp() {
+    try {
+      const item = JSON.parse(localStorage.getItem(OTP_STORAGE_KEY) || 'null');
+      if (!item || !item.email || !item.expiresAt || Date.now() >= item.expiresAt) {
+        localStorage.removeItem(OTP_STORAGE_KEY);
+        return null;
+      }
+      return item;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function savePendingOtp(email, expiresAt) {
+    localStorage.setItem(OTP_STORAGE_KEY, JSON.stringify({ email, expiresAt }));
+  }
+
+  function clearPendingOtp() {
+    localStorage.removeItem(OTP_STORAGE_KEY);
+    if (otpTimerInterval) clearInterval(otpTimerInterval);
+    otpTimerInterval = null;
+  }
+
+  function maskEmail(email) {
+    const [local, domain] = email.split('@');
+    if (!local) return email;
+    const visible = local.length <= 2 ? local[0] : local.slice(0, 2);
+    return `${visible}${'*'.repeat(Math.max(2, local.length - visible.length))}@${domain}`;
+  }
+
+  function startOtpTimer(expiresAt) {
+    if (otpTimerInterval) clearInterval(otpTimerInterval);
+    const tick = () => {
+      const left = Math.max(0, expiresAt - Date.now());
+      const totalSeconds = Math.ceil(left / 1000);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      gwOtpTimer.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (left <= 0) {
+        clearPendingOtp();
+        joinStatus.className = 'gw-status err';
+        joinStatus.textContent = 'This OTP expired. Click Join Giveaway again to request a new code.';
+      }
+    };
+    tick();
+    otpTimerInterval = setInterval(tick, 1000);
+  }
+
+  function showDetailsStep(prefillEmail = '') {
+    joinMode = 'details';
+    joinDetailsStep.hidden = false;
+    joinOtpStep.hidden = true;
+    document.getElementById('gwEmail').value = prefillEmail;
+    gwOtp.value = '';
+    document.getElementById('joinSubmitBtn').textContent = 'Join Giveaway →';
+    if (otpTimerInterval) clearInterval(otpTimerInterval);
+    otpTimerInterval = null;
+  }
+
+  function showOtpStep(email, expiresAt) {
+    joinMode = 'otp';
+    joinDetailsStep.hidden = true;
+    joinOtpStep.hidden = false;
+    gwOtpEmailText.textContent = `We sent a 6-digit code to ${maskEmail(email)}.`;
+    document.getElementById('joinSubmitBtn').textContent = 'Verify & Join →';
+    startOtpTimer(expiresAt);
+    setTimeout(() => gwOtp.focus(), 80);
+  }
+
+  async function openJoinModal() {
     if (!activeGiveaway) return;
     joinStatus.textContent = '';
     joinStatus.className = 'gw-status';
     joinForm.reset();
-    gwEmailHint.textContent = 'Gmail addresses only.';
+    gwEmailHint.textContent = 'Gmail is required to contact you if you win & validate your join.';
     gwEmailHint.classList.remove('error');
+
+    const pending = getPendingOtp();
+    if (pending) {
+      showOtpStep(pending.email, pending.expiresAt);
+    } else {
+      showDetailsStep();
+    }
     joinModalOverlay.classList.add('open');
   }
-  function closeJoinModal() { joinModalOverlay.classList.remove('open'); }
+
+  function closeJoinModal() {
+    joinModalOverlay.classList.remove('open');
+    if (joinMode === 'otp') {
+      const pending = getPendingOtp();
+      if (pending) startOtpTimer(pending.expiresAt);
+    } else if (otpTimerInterval) {
+      clearInterval(otpTimerInterval);
+      otpTimerInterval = null;
+    }
+  }
 
   document.getElementById('joinModalClose').addEventListener('click', closeJoinModal);
   document.getElementById('joinModalCancel').addEventListener('click', closeJoinModal);
@@ -1037,44 +1235,78 @@ body {
 
   document.getElementById('gwEmail').addEventListener('input', (e) => {
     const v = e.target.value.trim();
-    if (!v) { gwEmailHint.textContent = 'Gmail addresses only.'; gwEmailHint.classList.remove('error'); return; }
+    if (!v) { gwEmailHint.textContent = 'Gmail is required to contact you if you win & validate your join.'; gwEmailHint.classList.remove('error'); return; }
     if (!GMAIL_RE_GW.test(v)) { gwEmailHint.textContent = 'Only Gmail addresses are accepted.'; gwEmailHint.classList.add('error'); }
     else { gwEmailHint.textContent = 'Looks good.'; gwEmailHint.classList.remove('error'); }
   });
 
+  gwOtp.addEventListener('input', () => { gwOtp.value = gwOtp.value.replace(/\D/g, '').slice(0, 6); });
+
   joinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name = document.getElementById('gwName').value.trim();
-    const email = document.getElementById('gwEmail').value.trim();
-    if (!name) { joinStatus.className = 'gw-status err'; joinStatus.textContent = 'Please enter your Clan ID name.'; return; }
-    if (!GMAIL_RE_GW.test(email)) { joinStatus.className = 'gw-status err'; joinStatus.textContent = 'Only Gmail addresses are accepted.'; return; }
-
     const btn = document.getElementById('joinSubmitBtn');
     btn.disabled = true;
-    btn.textContent = 'Joining...';
     joinStatus.className = 'gw-status';
     joinStatus.textContent = '';
 
     try {
-      const data = await safeFetchJson('/api/giveaway/join', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email })
-      });
+      if (joinMode === 'otp') {
+        const pending = getPendingOtp();
+        if (!pending) {
+          showDetailsStep();
+          throw new Error('Your OTP expired. Please enter your Gmail again to request a new code.');
+        }
+        const otp = gwOtp.value.trim();
+        if (!/^\d{6}$/.test(otp)) throw new Error('Please enter the 6-digit OTP from your Gmail.');
 
-      joinStatus.className = 'gw-status ok';
-      joinStatus.textContent = data.alreadyJoined ? "You're already in this giveaway! 🎉" : "You're in! Good luck! 🎉";
+        const data = await safeFetchJson('/api/giveaway/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'verify', email: pending.email, otp })
+        });
 
-      const liveCountEl = document.getElementById('gwLiveCount');
-      if (liveCountEl) liveCountEl.textContent = data.entryCount;
+        clearPendingOtp();
+        joinStatus.className = 'gw-status ok';
+        joinStatus.innerHTML = `You're in! Good luck! 🎉${data.winningRate ? `<div class="gw-winning-rate"><div class="rate-label">Your winning rate</div><div class="rate-value">${escapeHtml(data.winningRate)}%</div><div class="rate-sub">${escapeHtml(String(data.entryCount))} member${data.entryCount === 1 ? '' : 's'} joined · ${escapeHtml(String(data.winnerCount))} winner${data.winnerCount === 1 ? '' : 's'}</div></div>` : ''}`;
+        const liveCountEl = document.getElementById('gwLiveCount');
+        if (liveCountEl) liveCountEl.textContent = data.entryCount;
+        setTimeout(closeJoinModal, 3200);
+      } else {
+        const name = document.getElementById('gwName').value.trim();
+        const email = document.getElementById('gwEmail').value.trim().toLowerCase();
+        if (!name) throw new Error('Please enter your Clash of Clans ID name.');
+        if (!GMAIL_RE_GW.test(email)) throw new Error('Only Gmail addresses are accepted.');
 
-      setTimeout(closeJoinModal, 1600);
+        const data = await safeFetchJson('/api/giveaway/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'request', name, email })
+        });
+
+        if (data.alreadyJoined) {
+          joinStatus.className = 'gw-status ok';
+          joinStatus.textContent = "You're already in this giveaway! 🎉";
+          setTimeout(closeJoinModal, 1600);
+        } else if (data.verified) {
+          joinStatus.className = 'gw-status ok';
+          joinStatus.innerHTML = `You're in! Good luck! 🎉<div class="gw-winning-rate"><div class="rate-label">Your winning rate</div><div class="rate-value">${escapeHtml(data.winningRate)}%</div><div class="rate-sub">${escapeHtml(String(data.entryCount))} member${data.entryCount === 1 ? '' : 's'} joined · ${escapeHtml(String(data.winnerCount))} winner${data.winnerCount === 1 ? '' : 's'}</div></div>`;
+          const liveCountEl = document.getElementById('gwLiveCount');
+          if (liveCountEl) liveCountEl.textContent = data.entryCount;
+          setTimeout(closeJoinModal, 3000);
+        } else {
+          savePendingOtp(email, data.expiresAt);
+          showOtpStep(email, data.expiresAt);
+          joinStatus.className = 'gw-status ok';
+          joinStatus.textContent = 'OTP sent. Check your Gmail and enter the code here.';
+        }
+      }
     } catch (err) {
       joinStatus.className = 'gw-status err';
       joinStatus.textContent = err.message;
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Join Giveaway';
+      if (joinMode === 'otp') btn.textContent = 'Verify & Join →';
+      else btn.textContent = 'Join Giveaway →';
     }
   });
 
