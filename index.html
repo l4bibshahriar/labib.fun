@@ -46,7 +46,6 @@
 <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="offline-overlay" id="offlineOverlay" aria-hidden="true"><div class="offline-panel"><div class="offline-top"><span class="offline-dot"></span><span>OFFLINE MODE</span></div><h1>No Internet Connected</h1><p>No data connection detected. Play the offline runner while you wait.</p><div class="offline-game"><div class="offline-hud"><span>SCORE <b id="offlineScore">00000</b></span><button id="offlineRestart" type="button">Restart</button></div><canvas id="offlineCanvas" width="760" height="220" aria-label="Offline dinosaur runner game"></canvas><p class="offline-help">Press <b>Space</b> / <b>↑</b> or tap the game to jump.</p></div></div></div>
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -120,38 +119,19 @@
 <!-- 4. Founder of Codium card -->
 <!-- 6. Skills card -->
 <section class="card skills-card">
-  <h2 class="card-heading" style="font-size:1.25rem;">Skills</h2>
-  <div class="skill-groups">
-    <article class="skill-group">
-      <div class="skill-group-head">
-        <div class="skill-group-icon" aria-hidden="true">
-          <svg fill="none" viewBox="0 0 24 24"><path d="M8 8.5a3.5 3.5 0 1 0 0 7M16 8.5a3.5 3.5 0 1 1 0 7M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div><h3>Discord Bot Development</h3><span>Automation, APIs &amp; Discord systems</span></div>
-      </div>
-      <div class="skill-progress">
-        <div class="skill-progress-label"><span>Python</span><strong>100%</strong></div>
-        <div class="skill-progress-track"><span style="--progress:100%"></span></div>
-      </div>
-    </article>
-    <article class="skill-group">
-      <div class="skill-group-head">
-        <div class="skill-group-icon" aria-hidden="true">
-          <svg fill="none" viewBox="0 0 24 24"><path d="M4 5h16v12H4zM8 20h8M12 17v3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8 9 2 2-2 2m4 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div><h3>Website Development</h3><span>Responsive, modern web experiences</span></div>
-      </div>
-      <div class="skill-progress">
-        <div class="skill-progress-label"><span>HTML</span><strong>98%</strong></div>
-        <div class="skill-progress-track"><span style="--progress:98%"></span></div>
-      </div>
-      <div class="skill-progress">
-        <div class="skill-progress-label"><span>CSS</span><strong>80%</strong></div>
-        <div class="skill-progress-track"><span style="--progress:80%"></span></div>
-      </div>
-    </article>
+<h2 class="card-heading" style="font-size:1.25rem;">Skills</h2>
+<div class="skill-groups">
+  <div class="skill-group">
+    <div class="skill-group-title"><div class="skill-group-icon"><span>⌘</span></div><div><strong>Discord Bot Development</strong><small>Python</small></div><b>100%</b></div>
+    <div class="skill-progress"><span style="width:100%"></span></div>
   </div>
-  <div class="good-at">Things I'm good at <span class="thumbs">👍</span></div>
+  <div class="skill-group">
+    <div class="skill-group-title"><div class="skill-group-icon"><span>&lt;/&gt;</span></div><div><strong>Website Development</strong><small>HTML · CSS</small></div></div>
+    <div class="skill-line"><div><span>HTML</span><b>98%</b></div><div class="skill-progress"><span style="width:98%"></span></div></div>
+    <div class="skill-line"><div><span>CSS</span><b>80%</b></div><div class="skill-progress"><span style="width:80%"></span></div></div>
+  </div>
+</div>
+<div class="good-at">Things I'm good at <span class="thumbs">👍</span></div>
 </section>
 <!-- 7. Stats card -->
 <section class="card stats-card">
@@ -203,22 +183,16 @@
 </section>
 <!-- Projects card -->
 <section class="card projects-card">
-  <p class="card-label">Selected work</p>
-  <h2 class="card-heading" style="font-size:1.15rem;">Projects</h2>
-  <div class="project-item">
-    <span class="project-name">🔥 Discord Badge Changer</span>
-    <span class="project-desc">Change between HypeSquad badges instantly, right from the browser.</span>
-    <a class="project-link" href="https://l4bibshahriar.github.io/discord-hypesquad-badge/" rel="noopener" target="_blank">Live Access →</a>
-  </div>
-  <div class="project-item">
-    <span class="project-name">⚡ Discord Embed Flow</span>
-    <span class="project-desc">Send pro-level embed messages to your Discord server with ease.</span>
-    <a class="project-link" href="https://l4bibshahriar.github.io/Embed-Flow/" rel="noopener" target="_blank">Live Access →</a>
-  </div>
-  <div class="card-action-row">
-    <a class="card-action primary" href="https://github.com/l4bibshahriar/" rel="noopener" target="_blank">View More →</a>
-    <a class="card-action secondary" href="https://www.labib.fun/#contact">Hire me →</a>
-  </div>
+<h2 class="card-heading" style="font-size:1.15rem;">Projects</h2>
+<div class="project-item">
+<span class="project-name">🔥 Discord Badge Changer</span>
+<span class="project-desc">Change between HypeSquad badges instantly, right from the browser.</span>
+</div>
+<div class="project-item">
+<span class="project-name">⚡ Discord Embed Flow</span>
+<span class="project-desc">Send pro-level embed messages to your Discord server with ease.</span>
+</div>
+<div class="project-actions"><a class="work-btn primary" href="https://github.com/l4bibshahriar/" rel="noopener" target="_blank">View More →</a><a class="work-btn secondary" href="https://www.labib.fun/#contact">Hire me →</a></div>
 </section>
 <!-- 8. Study card -->
 <section class="card study-card" id="study">
@@ -272,17 +246,13 @@
 </div>
 </div>
 </section>
-<!-- 9. My Library card -->
-<section class="card work-card library-card">
-  <p class="card-label">Personal archive</p>
-  <h2 class="card-heading">My Library</h2>
-  <p class="library-card-desc">A place where I upload my creations like Songs, Arts, Photos &amp; More!</p>
-  <div class="library-card-stats" aria-label="Library statistics">
-    <span><strong id="homeSongCount">0</strong>+ Songs</span>
-    <span><strong id="homeVisualCount">0</strong>+ Photos &amp; Arts</span>
-    <span><strong id="homeTotalCount">0</strong>+ Total Items</span>
-  </div>
-  <a class="work-btn primary library-view-btn" href="/library">View my Library →</a>
+<!-- 9. Work with card -->
+<section class="card work-card library-preview-card">
+<p class="card-label">My Library</p>
+<h2 class="card-heading">My Library</h2>
+<p class="library-preview-desc">A place where I upload my creations like Songs, Arts, Photos &amp; More!</p>
+<div class="library-mini-stats"><span><b id="homeSongsCount">0</b>+ Songs</span><span><b id="homeVisualsCount">0</b>+ Photos &amp; Arts</span><span><b id="homeTotalCount">0</b>+ Total Items</span></div>
+<a class="work-btn primary library-preview-btn" href="library.html">View my Library →</a>
 </section>
 </main>
 </section>
@@ -1032,7 +1002,7 @@
   /* Easter eggs                                                           */
   /* ==================================================================== */
 
-  /* Double-click: confetti. */
+  /* Double-click: confetti */
   document.addEventListener('click', (e) => {
     if (e.detail === 2) triggerConfetti();
   });
@@ -1069,21 +1039,19 @@
     btn.classList.add('copied'); btn.setAttribute('aria-label','Email copied'); setTimeout(()=>{btn.classList.remove('copied');btn.setAttribute('aria-label','Copy email address')},1400);
   }));
 
-  /* ---------------- Offline mode + local runner ---------------- */
-  const offlineOverlay=document.getElementById('offlineOverlay'), canvas=document.getElementById('offlineCanvas'), scoreEl=document.getElementById('offlineScore'), restartBtn=document.getElementById('offlineRestart');
-  if(offlineOverlay&&canvas){
-    const ctx=canvas.getContext('2d'); let game=null;
-    function showOffline(){offlineOverlay.classList.add('is-visible');offlineOverlay.setAttribute('aria-hidden','false');startRunner();}
-    function hideOffline(){offlineOverlay.classList.remove('is-visible');offlineOverlay.setAttribute('aria-hidden','true');if(game)game.running=false;}
-    window.addEventListener('offline',showOffline); window.addEventListener('online',hideOffline); if(!navigator.onLine)showOffline();
-    function startRunner(){
-      if(game)game.running=false; const d={x:90,y:174,vy:0,ground:174,score:0,speed:5,obstacleX:760,running:true,over:false,last:performance.now()}; game=d;
-      function jump(){if(d.over){startRunner();return;}if(d.y>=d.ground-1)d.vy=-12;}
-      const key=e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();jump();}}; document.addEventListener('keydown',key); canvas.onclick=jump; restartBtn.onclick=startRunner;
-      function frame(now){if(!d.running){document.removeEventListener('keydown',key);return;} const dt=Math.min(32,now-d.last)/16.67;d.last=now;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,195);ctx.lineTo(canvas.width,195);ctx.stroke();d.vy+=.65*dt;d.y+=d.vy*dt;if(d.y>d.ground){d.y=d.ground;d.vy=0;}d.obstacleX-=d.speed*dt;if(d.obstacleX<-30){d.obstacleX=canvas.width+80+Math.random()*180;d.score+=10;d.speed=Math.min(10,d.speed+.05);}ctx.fillStyle='#ff2d3e';ctx.fillRect(d.x,d.y,28,21);ctx.fillRect(d.x+18,d.y-10,14,14);ctx.fillRect(d.x+3,d.y+21,6,8);ctx.fillRect(d.x+20,d.y+21,6,8);ctx.fillStyle='#fff';ctx.fillRect(d.x+24,d.y-6,3,3);ctx.fillStyle='#ff6b57';ctx.fillRect(d.obstacleX,175,16,20);ctx.fillRect(d.obstacleX+7,166,7,10);const hit=d.x<d.obstacleX+16&&d.x+28>d.obstacleX&&d.y+28>175;if(hit){d.over=true;d.running=false;ctx.fillStyle='#fff';ctx.font='700 22px Manrope,sans-serif';ctx.fillText('GAME OVER — tap or press Space',220,100);document.removeEventListener('keydown',key);}scoreEl.textContent=String(d.score).padStart(5,'0');if(d.running)requestAnimationFrame(frame);}
-      requestAnimationFrame(frame);
-    }
-  }
+  /* ---------------- Live Library counters ---------------- */
+  (async function loadLibraryPreview(){
+    try {
+      const res = await fetch('https://admin.labib.fun/api/library', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      const items = Array.isArray(data.items) ? data.items : [];
+      const songs = items.filter(i => i.category === 'songs').length;
+      const visuals = items.filter(i => i.category === 'photos' || i.category === 'arts').length;
+      const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+      set('homeSongsCount', songs); set('homeVisualsCount', visuals); set('homeTotalCount', items.length);
+    } catch (_) {}
+  })();
 
   /* ---- Konami code: ↑ ↑ ↓ ↓ ← → ← → B A -> Matrix rain toggle ---- */
   const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -1145,6 +1113,5 @@
   }
 
 </script>
-<script src="library.js"></script>
 </body>
 </html>
