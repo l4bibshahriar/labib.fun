@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Library — Labib Shahriar</title>
+<meta name="description" content="Labib Shahriar's personal library of songs, photos and art.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090909;--card:#111;--card2:#151515;--text:#f5f5f5;--muted:#929292;--line:#292929;--accent:#ff2d3e;--accent2:#ff6b57;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;min-height:100vh}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+.library-wrap{width:min(1120px,calc(100% - 36px));margin:auto;padding:28px 0 150px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:75px}
+.brand{font-weight:800;font-size:1.05rem}.brand span{color:var(--accent2)}
+.back{border:1px solid var(--line);padding:10px 16px;border-radius:999px;color:var(--muted);transition:.2s}.back:hover{border-color:#444;color:#fff;transform:translateY(-2px)}
+.hero{max-width:780px;margin-bottom:45px}.eyebrow{font:500 .72rem "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:16px}.hero h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.9;letter-spacing:-.065em;margin:0 0 25px}.hero h1 span{color:var(--accent)}.hero p{color:var(--muted);font-size:1rem;line-height:1.7;max-width:650px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.stat{border:1px solid var(--line);background:#0d0d0d;border-radius:999px;padding:10px 15px;color:var(--muted);font-size:.82rem}.stat strong{color:#fff}
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow:auto}.library-tab{border:0;background:transparent;padding:14px 16px;color:var(--muted);cursor:pointer;position:relative;white-space:nowrap}.library-tab.active{color:#fff}.library-tab.active:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:2px;background:var(--accent)}
+.library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.library-item{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:14px;display:flex;align-items:center;gap:14px;min-width:0;transition:.22s}.library-item:hover{transform:translateY(-3px);border-color:#3b3b3b;background:var(--card2)}
+.song-open,.visual-open{border:0;background:#1b1b1b;cursor:pointer;flex:0 0 auto}.song-open{width:54px;height:54px;border-radius:15px;display:grid;place-items:center}.media-icon{width:31px;height:31px;border:1px solid #383838;border-radius:50%;display:grid;place-items:center;font-size:.7rem;padding-left:2px}.library-item-copy{min-width:0;flex:1}.library-item-copy h3{margin:0;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.library-item-copy p{margin:5px 0 0;color:var(--muted);font-size:.72rem}.mini-play{border:1px solid #343434;background:transparent;border-radius:999px;padding:7px 11px;font-size:.72rem;cursor:pointer}.mini-play:hover{background:#fff;color:#000}.visual-item{display:block;padding:10px}.visual-open{display:block;width:100%;aspect-ratio:16/10;border-radius:13px;overflow:hidden;padding:0}.visual-open img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .4s ease}.visual-item:hover img{transform:scale(1.035)}.visual-item .library-item-copy{padding:11px 4px 3px}.empty{padding:70px 20px;text-align:center;border:1px dashed #303030;border-radius:var(--radius);color:var(--muted)}.empty strong{display:block;color:#fff;margin-bottom:7px}
+.player{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(760px,calc(100% - 24px));z-index:20;border:1px solid #303030;background:rgba(17,17,17,.94);backdrop-filter:blur(18px);border-radius:18px;padding:12px 14px;box-shadow:0 18px 60px rgba(0,0,0,.45)}.player-main{display:flex;align-items:center;gap:12px}.player button{border:0;background:transparent;cursor:pointer}.player-control{width:34px;height:34px;border-radius:50%;background:#222!important}.player-control.primary{background:#fff!important;color:#000}.now{min-width:0;flex:1}.now b{display:block;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.now span{font-size:.68rem;color:var(--muted)}.time{font:400 .65rem "DM Mono",monospace;color:var(--muted)}input[type=range]{accent-color:var(--accent);cursor:pointer}.player-progress{width:100%;margin:6px 0}.player-bottom{display:flex;align-items:center;gap:8px}.player-volume{width:85px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:50;display:grid;place-items:center;padding:25px}.lightbox[hidden],.player[hidden]{display:none}.lightbox-inner{max-width:1000px;max-height:90vh;text-align:center;position:relative}.lightbox img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:14px}.lightbox-name{margin-top:12px;color:#ddd}.lightbox-close{position:fixed;top:20px;right:20px;border:1px solid #444;background:#161616;width:42px;height:42px;border-radius:50%;cursor:pointer}
+@media(max-width:720px){.library-wrap{width:min(100% - 22px,1120px);padding-top:18px}.topbar{margin-bottom:52px}.library-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(3rem,17vw,5rem)}.stats{gap:6px}.stat{font-size:.72rem;padding:8px 11px}.player{bottom:9px}.player-volume,.volume-label{display:none}}
+</style>
+</head>
+<body>
+<div class="library-wrap" id="libraryApp">
+<header class="topbar"><a class="brand" href="/">Labib <span>Shahriar</span></a><a class="back" href="/">← Back to portfolio</a></header>
+<section class="hero">
+<div class="eyebrow">// PERSONAL_ARCHIVE</div>
+<h1>My <span>Library.</span></h1>
+<p>A place where I upload my creations — songs, photos, art and whatever else deserves a little space on the internet.</p>
+<div class="stats">
+<div class="stat"><strong id="librarySongsCount">0</strong>+ Songs</div>
+<div class="stat"><strong id="libraryVisualCount">0</strong>+ Photos &amp; Arts</div>
+<div class="stat"><strong id="libraryTotalCount">0</strong>+ Total Items</div>
+</div>
+</section>
+<nav class="tabs" role="tablist" aria-label="Library categories">
+<button class="library-tab active" data-filter="songs" aria-selected="true">Songs</button>
+<button class="library-tab" data-filter="photos" aria-selected="false">Photos</button>
+<button class="library-tab" data-filter="arts" aria-selected="false">Arts</button>
+<button class="library-tab" data-filter="all" aria-selected="false">All</button>
+</nav>
+<section id="libraryGrid" class="library-grid" aria-live="polite"></section>
+<div id="libraryEmpty" class="empty" hidden><strong>No items here yet.</strong><span>New creations will appear here.</span></div>
+</div>
+<div class="player" id="libraryPlayer" hidden>
+<audio id="libraryAudio" preload="metadata"></audio>
+<div class="player-main">
+<button class="player-control" id="playerPrev" aria-label="Previous song">‹</button>
+<button class="player-control primary" id="playerPlay" aria-label="Play or pause">▶</button>
+<button class="player-control" id="playerNext" aria-label="Next song">›</button>
+<div class="now"><b id="nowPlayingTitle">Nothing playing</b><span id="nowPlayingMeta">My Library</span></div>
+<span class="time" id="playerCurrent">0:00</span><input id="playerProgress" class="player-progress" type="range" min="0" max="100" value="0" aria-label="Song progress"><span class="time" id="playerDuration">0:00</span>
+</div>
+<div class="player-bottom"><span class="volume-label time">VOL</span><input id="playerVolume" class="player-volume" type="range" min="0" max="1" step=".01" value=".9" aria-label="Volume"></div>
+</div>
+<div class="lightbox" id="libraryLightbox" hidden>
+<button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+<div class="lightbox-inner"><img src="" alt=""><div class="lightbox-name"></div></div>
+</div>
+<script src="/library.js"></script>
+</body>
+</html>

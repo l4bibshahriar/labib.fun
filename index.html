@@ -120,36 +120,38 @@
 <!-- 4. Founder of Codium card -->
 <!-- 6. Skills card -->
 <section class="card skills-card">
-<h2 class="card-heading" style="font-size:1.25rem;">Skills</h2>
-<div class="skills-grid">
-<div class="skill-item">
-<div class="skill-icon">
-<svg fill="none" viewbox="0 0 24 24"><path d="M12 2C9 2 8 3.5 8 5v2h4v.5H6.5C4.5 7.5 3 9 3 12s1.5 4.5 3.5 4.5H8V14c0-1.5 1-2.5 2.5-2.5h4.5c1.7 0 3-1.3 3-3V5c0-1.5-2-3-6-3zm-2.2 2.3a1 1 0 110 2 1 1 0 010-2z" fill="#ffe17d"></path><path d="M12 22c3 0 4-1.5 4-3v-2h-4v-.5h5.5C19.5 16.5 21 15 21 12s-1.5-4.5-3.5-4.5H16V10c0 1.5-1 2.5-2.5 2.5H9c-1.7 0-3 1.3-3 3v4c0 1.5 2 3 6 3zm2.2-2.3a1 1 0 110-2 1 1 0 010 2z" fill="#4b8bbe"></path></svg>
-</div>
-<span>Python</span>
-</div>
-<div class="skill-item">
-<div class="skill-icon">
-<svg fill="none" viewbox="0 0 24 24"><path d="M6 3l1.3 15L12 19.6 16.7 18 18 3H6z" fill="#ff2d3e"></path><path d="M12 5.4v12.7l3.8-1.3.9-10.4L12 5.4z" fill="#ff6b57"></path><circle cx="12" cy="9.5" fill="#fff" r="2.6"></circle></svg>
-</div>
-<span>Java</span>
-</div>
-<div class="skill-item">
-<div class="skill-icon">
-<svg fill="none" viewbox="0 0 24 24"><path d="M4 3l1.5 17L12 22l6.5-2L20 3H4z" fill="#e34f26"></path><path d="M12 5v15.4l5.2-1.6L18.5 5H12z" fill="#ff6b57"></path><path d="M12 8.6H8.6l.2 2.4H12v2.3H9l.2 2.3 2.8.8 2.8-.8.3-3H12" fill="#fff"></path></svg>
-</div>
-<span>HTML</span>
-</div>
-<div class="skill-item">
-<div class="skill-icon">
-<svg fill="none" viewbox="0 0 24 24"><path d="M4 3l1.5 17L12 22l6.5-2L20 3H4z" fill="#264de4"></path><path d="M12 5v15.4l5.2-1.6L18.5 5H12z" fill="#2965f1"></path><path d="M12 8.6H8.6l.2 2.4H12v2.3H9.4l.2 2.3 2.4.8 2.4-.8.3-2.7" fill="#fff"></path></svg>
-</div>
-<span>CSS</span>
-</div>
-</div>
-<div class="good-at">
-        Things I'm good at <span class="thumbs">👍</span>
-</div>
+  <h2 class="card-heading" style="font-size:1.25rem;">Skills</h2>
+  <div class="skill-groups">
+    <article class="skill-group">
+      <div class="skill-group-head">
+        <div class="skill-group-icon" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 24 24"><path d="M8 8.5a3.5 3.5 0 1 0 0 7M16 8.5a3.5 3.5 0 1 1 0 7M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div><h3>Discord Bot Development</h3><span>Automation, APIs &amp; Discord systems</span></div>
+      </div>
+      <div class="skill-progress">
+        <div class="skill-progress-label"><span>Python</span><strong>100%</strong></div>
+        <div class="skill-progress-track"><span style="--progress:100%"></span></div>
+      </div>
+    </article>
+    <article class="skill-group">
+      <div class="skill-group-head">
+        <div class="skill-group-icon" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 24 24"><path d="M4 5h16v12H4zM8 20h8M12 17v3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8 9 2 2-2 2m4 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h3>Website Development</h3><span>Responsive, modern web experiences</span></div>
+      </div>
+      <div class="skill-progress">
+        <div class="skill-progress-label"><span>HTML</span><strong>98%</strong></div>
+        <div class="skill-progress-track"><span style="--progress:98%"></span></div>
+      </div>
+      <div class="skill-progress">
+        <div class="skill-progress-label"><span>CSS</span><strong>80%</strong></div>
+        <div class="skill-progress-track"><span style="--progress:80%"></span></div>
+      </div>
+    </article>
+  </div>
+  <div class="good-at">Things I'm good at <span class="thumbs">👍</span></div>
 </section>
 <!-- 7. Stats card -->
 <section class="card stats-card">
@@ -201,17 +203,22 @@
 </section>
 <!-- Projects card -->
 <section class="card projects-card">
-<h2 class="card-heading" style="font-size:1.15rem;">Projects</h2>
-<div class="project-item">
-<span class="project-name">🔥 Discord Badge Changer</span>
-<span class="project-desc">Change between HypeSquad badges instantly, right from the browser.</span>
-<a class="project-link" href="https://l4bibshahriar.github.io/discord-hypesquad-badge/" rel="noopener" target="_blank">Live Access →</a>
-</div>
-<div class="project-item">
-<span class="project-name">⚡ Discord Embed Flow</span>
-<span class="project-desc">Send pro-level embed messages to your Discord server with ease.</span>
-<a class="project-link" href="https://l4bibshahriar.github.io/Embed-Flow/" rel="noopener" target="_blank">Live Access →</a>
-</div>
+  <p class="card-label">Selected work</p>
+  <h2 class="card-heading" style="font-size:1.15rem;">Projects</h2>
+  <div class="project-item">
+    <span class="project-name">🔥 Discord Badge Changer</span>
+    <span class="project-desc">Change between HypeSquad badges instantly, right from the browser.</span>
+    <a class="project-link" href="https://l4bibshahriar.github.io/discord-hypesquad-badge/" rel="noopener" target="_blank">Live Access →</a>
+  </div>
+  <div class="project-item">
+    <span class="project-name">⚡ Discord Embed Flow</span>
+    <span class="project-desc">Send pro-level embed messages to your Discord server with ease.</span>
+    <a class="project-link" href="https://l4bibshahriar.github.io/Embed-Flow/" rel="noopener" target="_blank">Live Access →</a>
+  </div>
+  <div class="card-action-row">
+    <a class="card-action primary" href="https://github.com/l4bibshahriar/" rel="noopener" target="_blank">View More →</a>
+    <a class="card-action secondary" href="https://www.labib.fun/#contact">Hire me →</a>
+  </div>
 </section>
 <!-- 8. Study card -->
 <section class="card study-card" id="study">
@@ -265,10 +272,18 @@
 </div>
 </div>
 </section>
-<!-- 9. Work with card -->
-<section class="card work-card">
-<h2 class="card-heading">Work with<br/>Labib Shahriar...!</h2>
-<div class="work-btns"><a class="work-btn primary" href="https://github.com/l4bibshahriar/" rel="noopener" target="_blank">View Project →</a><a class="work-btn secondary" href="#contact">Contact Me →</a></div></section>
+<!-- 9. My Library card -->
+<section class="card work-card library-card">
+  <p class="card-label">Personal archive</p>
+  <h2 class="card-heading">My Library</h2>
+  <p class="library-card-desc">A place where I upload my creations like Songs, Arts, Photos &amp; More!</p>
+  <div class="library-card-stats" aria-label="Library statistics">
+    <span><strong id="homeSongCount">0</strong>+ Songs</span>
+    <span><strong id="homeVisualCount">0</strong>+ Photos &amp; Arts</span>
+    <span><strong id="homeTotalCount">0</strong>+ Total Items</span>
+  </div>
+  <a class="work-btn primary library-view-btn" href="/library">View my Library →</a>
+</section>
 </main>
 </section>
 <!-- ============ PAGE 2 — MY STORY ============ -->
@@ -1017,14 +1032,9 @@
   /* Easter eggs                                                           */
   /* ==================================================================== */
 
-  /* Double-click: confetti. Triple-click: everything falls; triple-click
-     again: everything repairs itself with a smooth return animation. */
-  let easterEggFalling = false;
-  let easterRepairTimer = null;
-
+  /* Double-click: confetti. */
   document.addEventListener('click', (e) => {
     if (e.detail === 2) triggerConfetti();
-    if (e.detail === 3) toggleEasterFall();
   });
 
   function triggerConfetti() {
@@ -1039,37 +1049,6 @@
       piece.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
       document.body.appendChild(piece);
       setTimeout(() => piece.remove(), 5200);
-    }
-  }
-
-  function toggleEasterFall() {
-    clearTimeout(easterRepairTimer);
-    const targets = Array.from(document.body.querySelectorAll('*')).filter((el) => {
-      if (el.closest('#offlineOverlay')) return false;
-      const tag = el.tagName.toLowerCase();
-      if (['script','style','link','meta','title'].includes(tag)) return false;
-      if (el.classList.contains('bg-glow') || el.classList.contains('dots-field') || el.classList.contains('cursor-dot') || el.classList.contains('cursor-ring') || el.classList.contains('scroll-progress')) return false;
-      const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0;
-    });
-    if (!easterEggFalling) {
-      easterEggFalling = true; document.body.classList.add('easter-falling');
-      targets.forEach((el, index) => {
-        const r = el.getBoundingClientRect();
-        const availableY = Math.max(0, window.innerHeight - r.bottom - 12);
-        const maxX = Math.max(0, Math.min(70, (window.innerWidth - r.width) / 2));
-        el.classList.remove('easter-repair');
-        el.style.setProperty('--fall-x', `${Math.round((Math.random()*2-1)*maxX)}px`);
-        el.style.setProperty('--fall-y', `${Math.round(availableY*(0.35+Math.random()*0.65))}px`);
-        el.style.setProperty('--fall-r', `${Math.round((Math.random()*2-1)*12)}deg`);
-        el.style.setProperty('--fall-delay', `${Math.min(index*5,420)}ms`);
-        el.classList.add('easter-fall');
-      });
-    } else {
-      easterEggFalling = false; document.body.classList.remove('easter-falling');
-      targets.forEach((el) => { el.classList.remove('easter-fall'); el.classList.add('easter-repair'); });
-      easterRepairTimer = setTimeout(() => targets.forEach((el) => {
-        el.classList.remove('easter-repair'); ['--fall-x','--fall-y','--fall-r','--fall-delay'].forEach(v => el.style.removeProperty(v));
-      }), 1200);
     }
   }
 
@@ -1166,5 +1145,6 @@
   }
 
 </script>
+<script src="library.js"></script>
 </body>
 </html>

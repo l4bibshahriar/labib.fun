@@ -52,50 +52,6 @@
   }
 })();
 
-/* ---------------- Triple-click Easter egg ---------------- */
-(function tripleClickEasterEgg() {
-  let falling = false;
-  let repairTimer = null;
-
-  document.addEventListener('click', (e) => {
-    if (e.detail !== 3) return;
-    clearTimeout(repairTimer);
-
-    const ignored = '.bg-glow, .dots-field, .cursor-dot, .cursor-ring, .scroll-progress, script, style, link, meta, title';
-    const targets = Array.from(document.body.querySelectorAll(`*:not(${ignored})`));
-
-    if (!falling) {
-      falling = true;
-      document.body.classList.add('easter-falling');
-      targets.forEach((el) => {
-        if (!el.getBoundingClientRect().width) return;
-        el.style.setProperty('--fall-x', `${Math.round((Math.random() - 0.5) * Math.max(window.innerWidth, 700))}px`);
-        el.style.setProperty('--fall-r', `${Math.round((Math.random() - 0.5) * 70)}deg`);
-        el.style.setProperty('--fall-delay', `${Math.round(Math.random() * 180)}ms`);
-        el.classList.add('easter-fall');
-      });
-    } else {
-      falling = false;
-      targets.forEach((el) => {
-        if (!el.classList.contains('easter-fall')) return;
-        el.classList.remove('easter-fall');
-        el.classList.add('easter-repair');
-        el.style.setProperty('--fall-x', '0px');
-        el.style.setProperty('--fall-r', '0deg');
-      });
-      document.body.classList.remove('easter-falling');
-      repairTimer = setTimeout(() => {
-        targets.forEach((el) => {
-          el.classList.remove('easter-repair');
-          el.style.removeProperty('--fall-x');
-          el.style.removeProperty('--fall-r');
-          el.style.removeProperty('--fall-delay');
-        });
-      }, 1150);
-    }
-  });
-})();
-
 /* ---------------- Hub routing ---------------- */
 const menuView = document.getElementById('menuView');
 const gameView = document.getElementById('gameView');

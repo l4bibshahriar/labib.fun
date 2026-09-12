@@ -2,10 +2,33 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "rewrites": [
-    { "source": "/fun", "destination": "/fun/index.html" },
-    { "source": "/fun/", "destination": "/fun/index.html" },
-    { "source": "/clash", "destination": "/clash/index.html" },
-    { "source": "/Coc", "destination": "/clash/index.html" },
-    { "source": "/clash/", "destination": "/clash/index.html" }
+    {
+      "source": "/fun",
+      "destination": "/fun/index.html"
+    },
+    {
+      "source": "/fun/",
+      "destination": "/fun/index.html"
+    },
+    {
+      "source": "/clash",
+      "destination": "/clash/index.html"
+    },
+    {
+      "source": "/Coc",
+      "destination": "/clash/index.html"
+    },
+    {
+      "source": "/clash/",
+      "destination": "/clash/index.html"
+    },
+    {
+      "source": "/library",
+      "destination": "/library.html"
+    },
+    {
+      "source": "/library/",
+      "destination": "/library.html"
+    }
   ]
 }
