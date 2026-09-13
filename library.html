@@ -1,47 +1,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Library | Labib Shahriar</title>
-<meta name="description" content="Labib Shahriar's personal library of songs, photos and art.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090b">
+<title>My Library — Labib Shahriar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--panel:#111113;--panel2:#151518;--line:#28282d;--text:#f5f5f5;--muted:#9b9ba3;--accent:#fff;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 500px at 15% -10%,#20121a 0%,transparent 55%),radial-gradient(700px 500px at 100% 10%,#111827 0%,transparent 55%),var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit}.wrap{max-width:1120px;margin:auto;padding:0 20px 80px}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font:700 18px/1 Space Grotesk,sans-serif;letter-spacing:-.04em}.brand span{color:var(--muted);font-weight:500}.navlinks{display:flex;gap:10px;align-items:center}.navlinks a,.back{padding:10px 14px;border:1px solid var(--line);border-radius:999px;color:#d8d8dc;font-size:13px;font-weight:700}.navlinks a:hover,.back:hover{border-color:#555;color:#fff}
+.hero{padding:58px 0 28px;display:flex;justify-content:space-between;align-items:end;gap:28px}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8d8d96;font-weight:800;margin:0 0 10px}.hero h1{font:700 clamp(42px,7vw,76px)/.95 Space Grotesk,sans-serif;letter-spacing:-.07em;margin:0}.hero p{max-width:680px;color:var(--muted);line-height:1.7;margin:17px 0 0;font-size:14px}.back{white-space:nowrap}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin:6px 0 24px}.stat{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:999px;padding:9px 13px;font-size:12px;color:var(--muted)}.stat b{color:#fff;margin-right:4px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:10px 15px;cursor:pointer;font-weight:800;font-size:12px}.tab:hover,.tab.active{background:#fff;color:#09090b;border-color:#fff}
+.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.6fr);gap:18px}.panel{background:rgba(17,17,19,.9);border:1px solid var(--line);border-radius:var(--radius);padding:22px;min-width:0}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.panel h2{font:700 18px Space Grotesk,sans-serif;letter-spacing:-.03em;margin:0}.small{font-size:11px;color:var(--muted)}
+.message{border:1px dashed #34343a;border-radius:16px;padding:38px 18px;text-align:center;color:var(--muted);font-size:13px}.message strong{display:block;color:#fff;margin-bottom:5px}
+.songlist{display:flex;flex-direction:column;gap:8px}.song{width:100%;display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;border:1px solid transparent;background:transparent;color:#fff;border-radius:15px;padding:11px;text-align:left;cursor:pointer}.song:hover,.song.active{background:rgba(255,255,255,.045);border-color:var(--line)}.songicon{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:#1b1b20;color:#fff}.songname{font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.songmeta{color:var(--muted);font-size:10px;margin-top:4px}.songplay{color:#8f8f98;font-size:11px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.gallery button{padding:0;aspect-ratio:1;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#0b0b0d;cursor:pointer}.gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s}.gallery button:hover img{transform:scale(1.04)}
+.player{position:sticky;top:18px}.cover{height:240px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(145deg,#21151b,#101014);display:grid;place-items:center;font-size:72px;margin-bottom:18px}.now{font:700 19px Space Grotesk,sans-serif;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nowmeta{font-size:11px;color:var(--muted);margin-top:5px}.range{width:100%;accent-color:#fff;margin:22px 0 5px}.times{display:flex;justify-content:space-between;font:600 10px monospace;color:var(--muted)}.controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:16px}.controls button{width:43px;height:43px;border-radius:50%;border:1px solid var(--line);background:#151518;color:#fff;cursor:pointer}.controls .main{width:54px;height:54px;background:#fff;color:#09090b;border-color:#fff;font-weight:900}.controls button:hover{transform:translateY(-1px)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:20}.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:88vh;border-radius:16px}.close{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:50%;border:1px solid #444;background:#171719;color:#fff;font-size:23px;cursor:pointer}
+@media(max-width:850px){.hero{align-items:flex-start;flex-direction:column;padding-top:40px}.layout{grid-template-columns:1fr}.player{position:relative;top:auto}.cover{height:200px}}@media(max-width:560px){.navlinks a:first-child{display:none}.wrap{padding-left:14px;padding-right:14px}.gallery{grid-template-columns:repeat(2,1fr)}.panel{padding:15px}.hero h1{font-size:48px}}
+</style>
 </head>
 <body>
-<div class="scroll-progress" id="scrollProgress"></div><div class="bg-glow"></div><div class="dots-field" id="dotsField"></div>
 <div class="wrap">
-<header class="navbar">
+<header class="nav">
 <a class="brand" href="index.html">Labib <span>Shahriar</span></a>
-<nav class="nav-links"><a href="index.html#home">Home</a><a href="index.html#story">My Story</a><a href="index.html#clan">Nona_Soriyan</a><a href="index.html#contact">Contact</a></nav>
-<div class="nav-cta"><a class="btn-pill" href="index.html#contact">Let's Talk</a><a class="icon-btn" aria-label="Back home" href="index.html">↗</a></div>
+<nav class="navlinks"><a href="index.html">Home</a><a href="index.html#contact">Contact</a><a class="back" href="index.html">← Back</a></nav>
 </header>
-<main class="library-shell library-page">
-<section class="library-hero"><div><p class="card-label">Personal archive</p><h1>My Library</h1><p>A place where I upload my creations — songs, photos, arts &amp; more. Everything published from the private admin panel appears here automatically.</p><div class="library-counts"><span><b id="songsCount">0</b> Songs</span><span><b id="visualsCount">0</b> Photos &amp; Arts</span><span><b id="totalCount">0</b> Total Items</span></div></div><a class="library-back" href="index.html">← Back to portfolio</a></section>
-<div class="library-tabs"><button class="library-tab active" data-filter="all">All</button><button class="library-tab" data-filter="songs">Songs</button><button class="library-tab" data-filter="photos">Photos</button><button class="library-tab" data-filter="arts">Arts</button></div>
-<section class="library-layout">
-<div class="library-panel"><h2 id="listTitle">Latest creations</h2><div id="contentArea"><div class="library-empty">Loading library…</div></div></div>
-<aside class="library-panel player"><div class="now-cover" id="cover">🎵</div><div class="now-title" id="nowTitle">Choose a song</div><div class="now-meta" id="nowMeta">Your player will appear here.</div><div class="player-progress"><input id="seek" type="range" min="0" max="100" value="0"></div><div class="player-times"><span id="currentTime">0:00</span><span id="duration">0:00</span></div><div class="player-controls"><button id="prev" aria-label="Previous">↶</button><button id="play" class="play-main" aria-label="Play">▶</button><button id="next" aria-label="Next">↷</button></div><audio id="audio" preload="metadata"></audio></aside>
+<main>
+<section class="hero">
+<div><p class="eyebrow">Personal archive</p><h1>My Library</h1><p>A simple archive of my songs, photos, arts and other creations. New items published from the private admin panel appear here automatically.</p></div>
+</section>
+<div class="stats"><span class="stat"><b id="songsCount">0</b> Songs</span><span class="stat"><b id="visualsCount">0</b> Photos & Arts</span><span class="stat"><b id="totalCount">0</b> Total</span></div>
+<div class="tabs" role="tablist">
+<button class="tab active" data-filter="all">All</button><button class="tab" data-filter="songs">Songs</button><button class="tab" data-filter="photos">Photos</button><button class="tab" data-filter="arts">Arts</button>
+</div>
+<section class="layout">
+<div class="panel"><div class="panelhead"><h2 id="listTitle">Latest creations</h2><span class="small" id="status">Loading…</span></div><div id="content"></div></div>
+<aside class="panel player">
+<div class="cover" id="cover">♫</div><div class="now" id="nowTitle">Choose a song</div><div class="nowmeta" id="nowMeta">Your player is ready.</div>
+<input class="range" id="seek" type="range" min="0" max="100" value="0" step=".1"><div class="times"><span id="current">0:00</span><span id="duration">0:00</span></div>
+<div class="controls"><button id="prev" aria-label="Previous">↶</button><button id="play" class="main" aria-label="Play">▶</button><button id="next" aria-label="Next">↷</button></div>
+<audio id="audio" preload="metadata"></audio>
+</aside>
 </section>
 </main>
 </div>
-<div class="library-lightbox" id="lightbox"><button class="library-close" id="closeLightbox" aria-label="Close">×</button><img id="lightboxImg" alt=""></div>
+<div class="lightbox" id="lightbox" aria-hidden="true"><button class="close" id="close" aria-label="Close">×</button><img id="lightboxImg" alt=""></div>
 <script>
-const API='https://admin.labib.fun/api/library';let items=[],filter='all',songIndex=-1;
-const $=s=>document.querySelector(s), audio=$('#audio');
-function fmt(t){if(!Number.isFinite(t))return'0:00';return Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0')}
-function counts(){const songs=items.filter(x=>x.category==='songs').length,visuals=items.filter(x=>x.category==='photos'||x.category==='arts').length;$('#songsCount').textContent=songs;$('#visualsCount').textContent=visuals;$('#totalCount').textContent=items.length}
+const API='https://admin.labib.fun/api/library';
+const $=id=>document.getElementById(id); let items=[],filter='all',songIndex=-1;
+const audio=$('audio');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const bytes=n=>{n=Number(n)||0;if(n<1024)return n+' B';if(n<1048576)return Math.round(n/1024)+' KB';return (n/1048576).toFixed(1)+' MB'};
+const fmt=s=>Number.isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
+function updateStats(){ $('songsCount').textContent=items.filter(x=>x.category==='songs').length;$('visualsCount').textContent=items.filter(x=>x.category!=='songs').length;$('totalCount').textContent=items.length; }
 function visible(){return filter==='all'?items:items.filter(x=>x.category===filter)}
-function render(){counts();const list=visible(), area=$('#contentArea');$('#listTitle').textContent=filter==='all'?'Latest creations':filter[0].toUpperCase()+filter.slice(1);if(!list.length){area.innerHTML='<div class="library-empty">Nothing published in this category yet.</div>';return}
- if(filter==='songs'||(filter==='all'&&list.some(x=>x.category==='songs'))){const songs=list.filter(x=>x.category==='songs');const others=list.filter(x=>x.category!=='songs');area.innerHTML='';if(songs.length){const box=document.createElement('div');box.className='library-list';songs.forEach((x,i)=>box.appendChild(track(x,i)));area.appendChild(box)}if(others.length){const g=document.createElement('div');g.className='gallery-grid';others.forEach(x=>g.appendChild(gallery(x)));area.appendChild(g)}}else{const g=document.createElement('div');g.className='gallery-grid';list.forEach(x=>g.appendChild(gallery(x)));area.innerHTML='';area.appendChild(g)}}
-function track(x,i){const b=document.createElement('button');b.className='library-track';b.type='button';b.innerHTML='<span class="track-icon">♫</span><span><span class="track-title"></span><span class="track-meta">Song · '+(x.mime||'audio')+'</span></span><span class="track-action">▶</span>';b.querySelector('.track-title').textContent=x.name;b.onclick=()=>playSong(i);return b}
-function gallery(x){const b=document.createElement('button');b.className='gallery-item';b.type='button';b.innerHTML='<img loading="lazy" alt="">';b.querySelector('img').src=x.mediaUrl;b.querySelector('img').alt=x.name;b.onclick=()=>{$('#lightboxImg').src=x.mediaUrl;$('#lightboxImg').alt=x.name;$('#lightbox').classList.add('open')};return b}
-function playSong(i){const songs=items.filter(x=>x.category==='songs');if(!songs[i])return;songIndex=i;const x=songs[i];audio.src=x.mediaUrl;$('#nowTitle').textContent=x.name;$('#nowMeta').textContent='Song · '+x.mime;$('#cover').textContent='♫';audio.play().catch(()=>{});$('#play').textContent='❚❚'}
-$('#play').onclick=()=>{if(!audio.src)return;if(audio.paused){audio.play();$('#play').textContent='❚❚'}else{audio.pause();$('#play').textContent='▶'}};
-$('#prev').onclick=()=>{const n=items.filter(x=>x.category==='songs').length;if(n)playSong((songIndex-1+n)%n)};$('#next').onclick=()=>{const n=items.filter(x=>x.category==='songs').length;if(n)playSong((songIndex+1)%n)};
-audio.addEventListener('timeupdate',()=>{$('#seek').value=audio.duration?audio.currentTime/audio.duration*100:0;$('#currentTime').textContent=fmt(audio.currentTime);$('#duration').textContent=fmt(audio.duration)});audio.addEventListener('ended',()=>{const n=items.filter(x=>x.category==='songs').length;if(n)playSong((songIndex+1)%n)});$('#seek').oninput=e=>{if(audio.duration)audio.currentTime=Number(e.target.value)/100*audio.duration};
-document.querySelectorAll('.library-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.library-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;render()});
-$('#closeLightbox').onclick=()=>$('#lightbox').classList.remove('open');$('#lightbox').onclick=e=>{if(e.target.id==='lightbox')$('#lightbox').classList.remove('open')};
-(async()=>{try{const r=await fetch(API,{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();items=Array.isArray(d.items)?d.items:[];render()}catch(e){$('#contentArea').innerHTML='<div class="library-empty">Library is temporarily unavailable. Please try again soon.</div>'}})();
+function render(){
+ updateStats(); const list=visible(); $('listTitle').textContent=filter==='all'?'Latest creations':filter[0].toUpperCase()+filter.slice(1); const root=$('content'); root.innerHTML='';
+ if(!list.length){root.innerHTML='<div class="message"><strong>Nothing here yet</strong>No published items in this category.</div>';return}
+ const songs=list.filter(x=>x.category==='songs'), visuals=list.filter(x=>x.category!=='songs');
+ if(songs.length){const box=document.createElement('div');box.className='songlist';songs.forEach((x,i)=>{const b=document.createElement('button');b.className='song';b.dataset.id=x.id;b.innerHTML='<span class="songicon">♫</span><span><span class="songname"></span><span class="songmeta">Song · '+esc(bytes(x.size))+'</span></span><span class="songplay">▶</span>';b.querySelector('.songname').textContent=x.name;b.onclick=()=>playSong(i);box.appendChild(b)});root.appendChild(box)}
+ if(visuals.length){const g=document.createElement('div');g.className='gallery';g.style.marginTop=songs.length?'14px':'0';visuals.forEach(x=>{const b=document.createElement('button');b.innerHTML='<img loading="lazy">';const img=b.querySelector('img');img.src=x.mediaUrl;img.alt=x.name;b.onclick=()=>openBox(x.mediaUrl,x.name);g.appendChild(b)});root.appendChild(g)}
+}
+function songs(){return items.filter(x=>x.category==='songs')}
+function playSong(i){const s=songs();if(!s[i])return;songIndex=i;const x=s[i];audio.src=x.mediaUrl;$('nowTitle').textContent=x.name;$('nowMeta').textContent='My Library · '+(x.mime||'Audio');$('cover').textContent='♫';audio.play().then(()=>{$('play').textContent='❚❚'}).catch(()=>{$('play').textContent='▶'});document.querySelectorAll('.song').forEach(b=>b.classList.toggle('active',b.dataset.id===x.id))}
+$('play').onclick=()=>{if(!audio.src)return;if(audio.paused){audio.play();$('play').textContent='❚❚'}else{audio.pause();$('play').textContent='▶'}};
+$('prev').onclick=()=>{const s=songs();if(s.length)playSong((songIndex-1+s.length)%s.length)};$('next').onclick=()=>{const s=songs();if(s.length)playSong((songIndex+1)%s.length)};
+audio.addEventListener('timeupdate',()=>{$('current').textContent=fmt(audio.currentTime);$('duration').textContent=fmt(audio.duration);$('seek').value=audio.duration?audio.currentTime/audio.duration*100:0});
+audio.addEventListener('ended',()=>{const s=songs();if(s.length)playSong((songIndex+1)%s.length)});$('seek').oninput=e=>{if(audio.duration)audio.currentTime=Number(e.target.value)/100*audio.duration};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;render()});
+function openBox(src,name){$('lightboxImg').src=src;$('lightboxImg').alt=name;$('lightbox').classList.add('open');$('lightbox').setAttribute('aria-hidden','false')}
+function closeBox(){$('lightbox').classList.remove('open');$('lightbox').setAttribute('aria-hidden','true')}$('close').onclick=closeBox;$('lightbox').onclick=e=>{if(e.target.id==='lightbox')closeBox()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+(async()=>{try{const r=await fetch(API,{cache:'no-store'});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Library unavailable');items=Array.isArray(d.items)?d.items:[];$('status').textContent=items.length?items.length+' item'+(items.length===1?'':'s'):'Empty';render()}catch(e){$('status').textContent='Offline';$('content').innerHTML='<div class="message"><strong>Library unavailable</strong>Please try again in a moment.</div>'}})();
 </script>
-</body></html>
+</body>
+</html>
